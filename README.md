@@ -19,13 +19,20 @@ In the paper we show that the inductive biases of the flows &mdash; implicit ass
 - We show that OOD detection is improved when flows are trained on high-level features
   which contain semantic information extracted from image datasets.
 
-In this repository we provide code for reproducing results in the paper.
+In this repository we provide PyTorch code for reproducing results in the paper.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/14368801/84704630-230f9d80-af28-11ea-9538-b0ea8d5d784f.png" height=200>
 </p>
 
+## Data Preparation
 
+The following datasets need to be downloaded manually. You can then use the path to the data folder as `DATA_PATH` in the scripts below.
+- CelebA: 
+- NotMNIST: data available [here](https://www.kaggle.com/lubaroli/notmnist)
+- ImageNet 64x64: data available [here](http://image-net.org/small/download.php); we will add ImageNet scripts soon
+
+The other datasets can be automatically downloaded to `DATA_PATH` when you run the scripts below.
 
 ## Training RealNVP and Glow models
 
@@ -68,6 +75,7 @@ We provide example notebooks in `experiments/notebooks/`:
 - `GLOW_fashion.ipynb` &mdash; Glow for FashionMNIST
 - `realnvp_celeba.ipynb` &mdash; RealNVP for CelebA
 
+Below we show latent representations learned by RealNVP trained on FashionMNIST and CelebA for in-distribution and OOD inputs.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/14368801/84704791-5c480d80-af28-11ea-822c-7d367a650c31.png" height=170>

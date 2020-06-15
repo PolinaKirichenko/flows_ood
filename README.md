@@ -11,6 +11,11 @@ In the paper we ...
 
 In this repository we provide code for reproducing results in the paper.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/14368801/84704630-230f9d80-af28-11ea-9538-b0ea8d5d784f.png" height=200>
+</p>
+
+
 
 ## Training RealNVP and Glow models
 
@@ -52,6 +57,11 @@ python3 train_unsup.py --dataset=celeba --data_path=DATA_PATH --flow=Glow \
 We provide example notebooks in `experiments/notebooks/`:
 - `GLOW_fashion.ipynb` &mdash; Glow for FashionMNIST
 - `realnvp_celeba.ipynb` &mdash; RealNVP for CelebA
+
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/14368801/84704791-5c480d80-af28-11ea-822c-7d367a650c31.png" height=170>
+</p>
 
 ## References
 

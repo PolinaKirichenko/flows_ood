@@ -46,23 +46,23 @@ The scripts for training flow models are in the `experiments/train_flows/` folde
 Comands used to train baseline models:
 ```bash
 # RealNVP on FashionMNIST
-python3 train_unsup.py --dataset=FashionMNIST --data_path=DATA_PATH --save_freq=20 \
+python3 train_unsup.py --dataset=[FashionMNIST | MNIST] --data_path=DATA_PATH --save_freq=20 \
   --flow=RealNVP --logdir=LOG_DIR --ckptdir=CKPTS_DIR --num_epochs=81 --lr=5e-5 \
   --prior=Gaussian --num_blocks=6 --batch_size=32
 
 # RealNVP on CelebA
-python3 train_unsup.py --dataset=celeba --data_path=DATA_PATH --logdir=LOG_DIR \
+python3 train_unsup.py --dataset=[CelebA | CIFAR10 | SVHN] --data_path=DATA_PATH --logdir=LOG_DIR \
   --ckptdir=CKPTS_DIR --num_epochs=101 --lr=1e-4 --batch_size=32 --num_blocks=8 \
   --weight_decay=5e-5 --num_scales=3
 
 # Glow on FashionMNIST
-python3 train_unsup.py --dataset=FashionMNIST --data_path=DATA_PATH --flow=Glow \
+python3 train_unsup.py --dataset=[FashionMNIST | MNIST] --data_path=DATA_PATH --flow=Glow \
   --logdir=LOG_DIR --ckptdir=CKPTS_DIR --num_epochs=151 --lr=5e-5 --batch_size=32 \
   --optim=RMSprop --num_scales=2 --num_coupling_layers_per_scale=16 \
   --st_type=highway --num_blocks=3 --num_mid_channels=200
   
 # Glow on CelebA
-python3 train_unsup.py --dataset=celeba --data_path=DATA_PATH --flow=Glow \
+python3 train_unsup.py --dataset=[CelebA | CIFAR10 | SVHN] --data_path=DATA_PATH --flow=Glow \
   --logdir=LOG_DIR --ckptdir=CKPTS_DIR --num_epochs=161 --lr=1e-5 --batch_size=32 \
   --optim=RMSprop --num_scales=3 --num_coupling_layers_per_scale=8 \
   --st_type=highway --num_blocks=3 --num_mid_channels=400
@@ -80,6 +80,21 @@ Below we show latent representations learned by RealNVP trained on FashionMNIST 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/14368801/84704791-5c480d80-af28-11ea-822c-7d367a650c31.png" height=170>
 </p>
+
+## Negative Training
+
+To reproduce the experiments in Appendix B, you can use the script `train_unsup_ood_negative.py`, e.g.
+to maximize likelihood on CIFAR-10 and minimize likelihood on CelebA:
+
+```bash
+train_unsup_ood_negative.py --ood_dataset=CelebA --ood_data_path=OOD_DATA_PATH --dataset=CIFAR10 \
+  --data_path=DATA_PATH --logdir=LOG_DIR ckptdir=CKPTS_DIR --num_epochs=101 --lr=5e-5 --batch_size=32 \
+  --num_blocks=8 --num_scales=3 --negative_val=-100000 --save_freq=10 --flow=RealNVP
+```
+
+For other dataset pairs, reuse the hyper-parameters of the baseline models and set `--negative_val` equal
+to `-100000` for CIFAR-10, CelebA and SVHN and to `-30000` for FashionMNIST, MNIST.
+
 
 ## References
 

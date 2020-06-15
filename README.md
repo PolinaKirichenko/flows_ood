@@ -7,7 +7,17 @@ by  Polina Kirichenko, Pavel Izmailov and Andrew Gordon Wilson.
 
 ## Introduction
 
-In the paper we ...
+In the paper we show that the inductive biases of the flows &mdash; implicit assumptions in their architecture and training procedure &mdash; can hinder OOD detection. 
+- We show that flows learn latent representations for images largely based on local pixel
+  correlations, rather than semantic content, making it difficult to detect data with
+  anomalous semantics.
+- We identify mechanisms through which normalizing flows can simultaneously increase
+  likelihood for all structured images.
+- We show that by changing the architectural details of the coupling layers, we can
+  encourage flows to learn transformations specific to the target data, improving OOD
+  detection.
+- We show that OOD detection is improved when flows are trained on high-level features
+  which contain semantic information extracted from image datasets.
 
 In this repository we provide code for reproducing results in the paper.
 

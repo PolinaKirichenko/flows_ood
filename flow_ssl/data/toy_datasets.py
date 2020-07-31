@@ -51,7 +51,7 @@ def make_circle(noise=.05):
     return data, labels
 
 
-adapted from ffjord code
+# adapted from ffjord code
 def make_dataset_from_img(img_path):
     img = np.array(Image.open(img_path).convert('L'))
     h, w = img.shape

@@ -1,4 +1,4 @@
-# Why Normalizing Flows Fail to DetectOut-of-Distribution Data
+# Why Normalizing Flows Fail to Detect Out-of-Distribution Data
 This repository contains experiments for the paper
 
 _Why Normalizing Flows Fail to DetectOut-of-Distribution Data_
